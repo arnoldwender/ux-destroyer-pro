@@ -1,5 +1,11 @@
-For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+This is UX Destroyer Pro — a satirical React app showcasing intentionally terrible UX patterns for educational and comedic purposes. The bad UX is the feature, not a bug.
 
-By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
+Tech stack: React 18 + TypeScript 5.5 (strict), Vite 5.4, Tailwind CSS 3.4, Lucide React for icons, custom CRT retro theme in CSS.
 
-Use icons from lucide-react for logos.
+Design rules:
+- Maintain the retro CRT aesthetic: red on black, monospace fonts, scanlines, vignette, glitch effects.
+- Use JSX with Tailwind CSS classes and React hooks.
+- Use Lucide React for icons. Do not install other UI theme or icon packages unless absolutely necessary.
+- Keep components self-contained with local React hook state (no external state management).
+- All code must pass TypeScript strict mode checks.
+- The deliberately bad UX patterns are the core feature — do not fix them unless asked.

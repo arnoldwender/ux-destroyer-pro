@@ -1,0 +1,52 @@
+# UX Destroyer Pro
+
+> Wender Media Anti-Conversion Suite — v6.6.6
+
+## What This Project Is
+
+UX Destroyer Pro is a satirical React web application that intentionally implements terrible UX patterns for educational and comedic purposes. It demonstrates what NOT to do when designing user interfaces. The bad UX is the feature, not a bug.
+
+## Tech Stack
+
+- React 18 with TypeScript 5.5 (strict mode)
+- Vite 5.4 (build tool and dev server)
+- Tailwind CSS 3.4 with custom CRT retro theme
+- Lucide React (icons)
+- ESLint 9 with TypeScript ESLint
+- PostCSS with Autoprefixer
+
+## Project Structure
+
+- src/App.tsx: Root component with tab navigation, header, footer
+- src/main.tsx: React DOM entry point
+- src/index.css: All styles including CRT retro effects
+- src/components/EscapingButton.tsx: Button that flees from cursor
+- src/components/InvisibleText.tsx: White-on-white hidden text
+- src/components/ImpossibleCaptcha.tsx: Unsolvable CAPTCHA challenges
+- src/components/SelfResettingForm.tsx: Form that auto-clears every 10 seconds
+- src/utils/glitch.ts: Text glitch effect utility
+
+## Commands
+
+- npm run dev: Start Vite dev server
+- npm run build: Production build
+- npm run preview: Preview production build
+- npm run lint: Run ESLint
+- npm run typecheck: TypeScript type checking
+
+## Key Conventions
+
+- Functional React components with hooks (no class components)
+- TypeScript strict mode enforced
+- Tailwind CSS for layout; custom CSS in index.css for CRT theme effects
+- No external state management (React hooks only)
+- No external UI libraries beyond Lucide React
+- Each demo component is self-contained with local state
+- PascalCase component files, camelCase utility files
+
+## Important Context
+
+- The deliberately bad UX patterns are the core feature — do not fix them
+- The CRT retro aesthetic (scanlines, vignette, red-on-black, glitch text) is intentional
+- The satirical tone and humorous content are part of the project identity
+- @supabase/supabase-js is a dependency but not currently used
