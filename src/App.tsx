@@ -76,7 +76,7 @@ export default function App() {
         {/* ── Header ── */}
         <header className="app-header">
           <div className="header-subtitle">
-            WENDER MEDIA ANTI-CONVERSION SUITE
+            ARNOLD WENDER ANTI-CONVERSION SUITE
           </div>
           <h1
             className="header-title"
@@ -156,7 +156,7 @@ export default function App() {
         <footer className="app-footer">
           <div>UX DESTROYER PRO &mdash; MAKING THE WEB WORSE SINCE 2026</div>
           <div>
-            BUILT BY WENDER MEDIA &mdash; WE KNOW WHAT GOOD UX IS. THIS IS NOT IT.
+            BUILT BY ARNOLD WENDER &mdash; WE KNOW WHAT GOOD UX IS. THIS IS NOT IT.
           </div>
           <div className="footer-teapot">
             HTTP 418 &mdash; I AM A TEAPOT AND I HAVE BETTER UX THAN THIS
