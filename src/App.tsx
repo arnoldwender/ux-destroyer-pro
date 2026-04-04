@@ -1,17 +1,27 @@
+/**
+ * UX Destroyer Pro — Main app shell.
+ * Wires together the toggle panel, chaos meter, boss mode,
+ * achievements, share card, and all active anti-pattern effects.
+ */
 import { useState, useEffect } from 'react';
 import { glitchText } from './utils/glitch';
-import EscapingButton from './components/EscapingButton';
-import InvisibleText from './components/InvisibleText';
-import ImpossibleCaptcha from './components/ImpossibleCaptcha';
-import SelfResettingForm from './components/SelfResettingForm';
+import { useAntiPatterns } from './store/useAntiPatterns';
 
-const TABS = [
-  { label: 'ESCAPING CTA', component: <EscapingButton /> },
-  { label: 'INVISIBLE COPY', component: <InvisibleText /> },
-  { label: 'CAPTCHA \u221E', component: <ImpossibleCaptcha /> },
-  { label: 'SELF-RESET FORM', component: <SelfResettingForm /> },
-];
+/* Components */
+import TogglePanel from './components/TogglePanel';
+import ChaosMeter from './components/ChaosMeter';
+import BossMode from './components/BossMode';
+import UXScore from './components/UXScore';
+import GlobalCounter from './components/GlobalCounter';
+import AchievementToast from './components/AchievementToast';
+import AchievementList from './components/AchievementList';
+import TutorialPopup from './components/TutorialPopup';
+import PremiumTrap from './components/PremiumTrap';
+import ShareCard from './components/ShareCard';
+import ActiveEffects from './components/ActiveEffects';
+import RickrollOverlay from './components/RickrollOverlay';
 
+/* Badge labels in the header */
 const BADGES = [
   'NIELSEN CERTIFIED',
   "FITT'S LAW VIOLATOR",
@@ -21,8 +31,9 @@ const BADGES = [
 
 export default function App() {
   const [titleText, setTitleText] = useState('UX DESTROYER PRO');
-  const [tab, setTab] = useState(0);
+  const state = useAntiPatterns();
 
+  /* ── Glitch title effect ── */
   useEffect(() => {
     const base = 'UX DESTROYER PRO';
     const iv = setInterval(() => {
@@ -31,6 +42,14 @@ export default function App() {
     }, 3000);
     return () => clearInterval(iv);
   }, []);
+
+  /* ── Rickroll state ── */
+  const [showRickroll, setShowRickroll] = useState(false);
+  useEffect(() => {
+    if (state.titleClicks >= 10 && !showRickroll) {
+      setShowRickroll(true);
+    }
+  }, [state.titleClicks, showRickroll]);
 
   return (
     <div className="app-root">
@@ -41,13 +60,31 @@ export default function App() {
       {/* Moving scan line */}
       <div className="overlay-scanbar" />
 
+      {/* ── Active anti-pattern effects ── */}
+      <ActiveEffects
+        enabled={state.enabled}
+        bumpTraumatized={state.bumpTraumatized}
+      />
+
       <div className="app-container">
-        {/* Header */}
+        {/* ── Global Counter Banner ── */}
+        <GlobalCounter
+          traumatized={state.totalTraumatized}
+          deployed={state.totalDeployed}
+        />
+
+        {/* ── Header ── */}
         <header className="app-header">
           <div className="header-subtitle">
             WENDER MEDIA ANTI-CONVERSION SUITE
           </div>
-          <h1 className="header-title">{titleText}</h1>
+          <h1
+            className="header-title"
+            onClick={state.bumpTitleClick}
+            style={{ cursor: 'pointer' }}
+          >
+            {titleText}
+          </h1>
           <div className="header-version">
             v6.6.6 &mdash; GUARANTEED 0% CONVERSION RATE OR YOUR MONEY BACK*
           </div>
@@ -61,34 +98,99 @@ export default function App() {
           </div>
         </header>
 
-        {/* Tab bar */}
-        <nav className="tab-bar">
-          {TABS.map((t, i) => (
-            <button
-              key={i}
-              onClick={() => setTab(i)}
-              className={`tab${tab === i ? ' active' : ''}`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </nav>
+        {/* ── Chaos Meter ── */}
+        <ChaosMeter percent={state.chaosPercent} label={state.chaosLabel} />
 
-        {/* Active tab content */}
-        <main className="tab-content">{TABS[tab].component}</main>
+        {/* ── UX Score ── */}
+        <UXScore score={state.uxScore} enabledCount={state.enabledCount} />
 
-        {/* Footer */}
+        {/* ── Toggle Panel (replaces old tabs) ── */}
+        <TogglePanel state={state} />
+
+        {/* ── Demo Section: Original components still available ── */}
+        <section className="demo-section">
+          <div className="demo-section-title">LIVE DEMO AREA</div>
+          <div className="demo-section-desc">
+            The anti-patterns above affect THIS page. Try typing below, hovering text,
+            or catching the button while effects are active.
+          </div>
+
+          {/* Interactive demo content that gets affected by anti-patterns */}
+          <div className="demo-content">
+            <div className="demo-block">
+              <p className="demo-text">
+                This is sample content that will be affected by the anti-patterns you enable above.
+                Try enabling "Invisible Text" and hovering over this paragraph. Or enable
+                "Reading Mode Disabled" and watch the fonts go haywire.
+              </p>
+            </div>
+
+            <div className="demo-block">
+              <label className="demo-label">TRY TYPING HERE:</label>
+              <input
+                className="demo-input"
+                placeholder="Enable 'Self-Resetting Form' and watch your text vanish..."
+              />
+            </div>
+
+            <div className="demo-block">
+              <button className="demo-cta">
+                SAMPLE CTA BUTTON (enable "Escaping Buttons" and try to click me)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Share Card ── */}
+        <ShareCard
+          score={state.uxScore}
+          enabledCount={state.enabledCount}
+          bossTime={state.bossTime}
+          achievementCount={state.achievements.length}
+        />
+
+        {/* ── Achievements ── */}
+        <AchievementList unlocked={state.achievements} />
+
+        {/* ── Footer ── */}
         <footer className="app-footer">
           <div>UX DESTROYER PRO &mdash; MAKING THE WEB WORSE SINCE 2026</div>
           <div>
-            BUILT BY WENDER MEDIA &mdash; WE KNOW WHAT GOOD UX IS. THIS IS NOT
-            IT.
+            BUILT BY WENDER MEDIA &mdash; WE KNOW WHAT GOOD UX IS. THIS IS NOT IT.
           </div>
           <div className="footer-teapot">
             HTTP 418 &mdash; I AM A TEAPOT AND I HAVE BETTER UX THAN THIS
           </div>
         </footer>
       </div>
+
+      {/* ── Overlays ── */}
+      <BossMode
+        active={state.bossMode}
+        time={state.bossTime}
+        airlineMsg={state.airlineMsg}
+        onStop={state.stopBoss}
+      />
+
+      <TutorialPopup
+        patternId={state.tutorialId}
+        onClose={state.closeTutorial}
+      />
+
+      <PremiumTrap
+        show={state.premiumTrap}
+        onClose={() => state.setPremiumTrap(false)}
+      />
+
+      <AchievementToast
+        achievement={state.newAchievement}
+        onDismiss={state.clearNewAchievement}
+      />
+
+      <RickrollOverlay
+        show={showRickroll}
+        onClose={() => setShowRickroll(false)}
+      />
     </div>
   );
 }
