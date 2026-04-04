@@ -1,0 +1,21 @@
+# UX Destroyer Pro
+
+> Toggle 10 anti-UX patterns live on the page — experience the worst of web design.
+
+## Tech Stack
+- React 18, TypeScript, Vite, Tailwind CSS
+- Framer Motion, canvas-confetti, html2canvas, Lucide React
+
+## Key Files
+- src/App.tsx — main application entry
+- src/components/ — UI components (pattern toggles, chaos meter, boss mode, premium trap)
+- src/store/ — state management for active anti-patterns
+- src/utils/ — anti-pattern implementations, scoring
+
+## Features
+- 10 toggleable anti-UX patterns, Boss Mode with survival timer
+- Chaos meter, UX score, rickroll easter egg, premium trap, dark pattern showcase
+
+## URLs
+- Live: https://ux-destroyer-pro.netlify.app
+- Repo: https://github.com/arnoldwender/ux-destroyer-pro
