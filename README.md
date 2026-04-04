@@ -2,7 +2,7 @@
 
 **Toggle 10 anti-UX patterns live on the page — experience the worst of web design.**
 
-Built by [Arnold Wender](https://github.com/arnoldwender)
+Built by [Arnold Wender](https://arnoldwender.com)
 
 [:rocket: Live Demo](https://ux-destroyer-pro.netlify.app)
 
