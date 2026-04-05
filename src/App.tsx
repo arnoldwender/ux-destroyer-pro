@@ -20,6 +20,10 @@ import PremiumTrap from './components/PremiumTrap';
 import ShareCard from './components/ShareCard';
 import ActiveEffects from './components/ActiveEffects';
 import RickrollOverlay from './components/RickrollOverlay';
+import ABTestDashboard from './components/ABTestDashboard';
+import WCAGSpeedrun from './components/WCAGSpeedrun';
+import DarkPatternBadge from './components/DarkPatternBadge';
+import ChangelogProCLI from './components/ChangelogProCLI';
 
 /* Badge labels in the header */
 const BADGES = [
@@ -140,6 +144,18 @@ export default function App() {
             </div>
           </div>
         </section>
+
+        {/* ── A/B Test Dashboard ── */}
+        <ABTestDashboard />
+
+        {/* ── WCAG Violation Speedrun ── */}
+        <WCAGSpeedrun enabled={state.enabled} />
+
+        {/* ── Dark Pattern Certification Badge ── */}
+        <DarkPatternBadge enabledCount={state.enabledCount} uxScore={state.uxScore} />
+
+        {/* ── Changelog, Pro Tier & CLI ── */}
+        <ChangelogProCLI />
 
         {/* ── Share Card ── */}
         <ShareCard
