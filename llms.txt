@@ -9,12 +9,22 @@
 ## Key Files
 - src/App.tsx — main application entry
 - src/components/ — UI components (pattern toggles, chaos meter, boss mode, premium trap)
+- src/components/ABTestDashboard.tsx — Optimizely-style A/B test dashboard
+- src/components/WCAGSpeedrun.tsx — WCAG violation speedrun counter
+- src/components/DarkPatternBadge.tsx — Dark pattern certification badge generator
+- src/components/ChangelogProCLI.tsx — Changelog, Pro Tier, and CLI simulator
 - src/store/ — state management for active anti-patterns
 - src/utils/ — anti-pattern implementations, scoring
 
 ## Features
 - 10 toggleable anti-UX patterns, Boss Mode with survival timer
 - Chaos meter, UX score, rickroll easter egg, premium trap, dark pattern showcase
+- A/B Test Dashboard (Optimizely-style)
+- WCAG Violation Speedrun Counter
+- Dark Pattern Certification Badge generator
+- Fake Changelog
+- Pro Tier ($666/month)
+- CLI Simulator
 
 ## URLs
 - Live: https://ux-destroyer-pro.netlify.app
