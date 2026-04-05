@@ -18,6 +18,12 @@ Built by [Arnold Wender](https://arnoldwender.com)
 - Premium trap — a fake upgrade flow that leads nowhere
 - Dark pattern showcase including fake close buttons, moving CTAs, and more
 - Confetti celebrations for surviving the worst UX imaginable
+- A/B Test Dashboard — Optimizely-style dashboard showing which anti-patterns destroy UX fastest
+- WCAG Violation Speedrun Counter — race to break as many accessibility guidelines as possible
+- Dark Pattern Certification Badge — generate an official badge certifying your mastery of dark patterns
+- Fake Changelog — version history of the app's descent into UX madness
+- Pro Tier ($666/month) — premium destruction at a devilishly appropriate price
+- CLI Simulator — terminal-based interface for destroying UX from the command line
 
 ## Anti-Patterns Include
 
